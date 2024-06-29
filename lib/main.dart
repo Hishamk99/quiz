@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/resources/routes.dart';
 import 'package:quiz_app/features/Splash/screens/splash_page.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class QuizApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Montserrat',
       ),
-      home: const SplashPage(),
+      routes: Routes.routes,
+      initialRoute: SplashPage.id,
     );
   }
 }
