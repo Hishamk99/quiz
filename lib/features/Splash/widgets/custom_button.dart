@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/resources/colors_manager.dart';
+import 'package:quiz_app/core/resources/styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key, required this.onTap,
+    super.key,
+    required this.onTap,
   });
-  final  void Function()? onTap;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,11 +22,7 @@ class CustomButton extends StatelessWidget {
         child: Center(
           child: Text(
             'Get Started',
-            style: TextStyle(
-              fontSize: 21,
-              color: ColorsManager.kGetStartedColor,
-              fontWeight: FontWeight.w400,
-            ),
+            style: Styles.styles21_400,
           ),
         ),
       ),

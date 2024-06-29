@@ -11,7 +11,7 @@ class CustomQuizImage extends StatelessWidget {
     return Image.asset(
       AssetsManager.kSplashQ,
       width: MediaQuery.of(context).size.width * .7,
-      height: MediaQuery.of(context).size.height * .8,
+      height: MediaQuery.of(context).size.height * .78,
     );
   }
 }
