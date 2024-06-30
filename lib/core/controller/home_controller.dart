@@ -27,8 +27,8 @@ class HomeController {
     inputIndicator.add(currentINdexPage);
     controller.animateToPage(
       currentINdexPage,
-      duration: const Duration(seconds: 1),
-      curve: Curves.bounceIn,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.linear,
     );
   }
 
