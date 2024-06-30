@@ -1,13 +1,18 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/controller/home_controller.dart';
 import 'package:quiz_app/core/resources/colors_manager.dart';
 import 'package:quiz_app/core/resources/styles.dart';
-
 import 'custuom_home_text_button_item.dart';
 
 class CustomHomeTextButtons extends StatelessWidget {
-  const CustomHomeTextButtons({super.key, required this.onTap});
+  const CustomHomeTextButtons({
+    super.key,
+    required this.onTap,
+    required this.homeController,
+  });
   final void Function(int) onTap;
+  final HomeController homeController;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,16 +25,24 @@ class CustomHomeTextButtons extends StatelessWidget {
             txt: 'Skip',
             style: Styles.styles15_400,
           ),
-          DotsIndicator(
-            onTap: (position) {
-              onTap(position);
-            },
-            dotsCount: 3,
-            position: 1,
-            decorator: DotsDecorator(
-              activeColor: ColorsManager.kGetStartedColor,
-            ),
-          ),
+          StreamBuilder<int>(
+              stream: homeController.outputIndicator,
+              builder: (context, snapshot) {
+                return DotsIndicator(
+                  onTap: (position) {
+                    onTap(position);
+                    homeController.indicatorStream.add(position);
+                  },
+                  dotsCount: 3,
+                  position: snapshot.data ?? 0,
+                  decorator: DotsDecorator(
+                    size: const Size(12, 12),
+                    activeSize: const Size(12, 12),
+                    activeColor: ColorsManager.kGetStartedColor,
+                    color: ColorsManager.kUnActiveIndicatorColor,
+                  ),
+                );
+              }),
           CustuomHomeTextButtonItem(
             onPressed: () {},
             txt: 'Next',
