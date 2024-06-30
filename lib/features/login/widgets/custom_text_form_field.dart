@@ -12,7 +12,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       onSaved: onSaved,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return 'Field is required';
         }
         return null;
