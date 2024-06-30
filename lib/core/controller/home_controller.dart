@@ -20,4 +20,9 @@ class HomeController {
     }
     inputIndicator.add(currentINdexPage);
   }
+
+  void dispose() {
+    indicatorStream.close();
+    indicatorStream.close();
+  }
 }

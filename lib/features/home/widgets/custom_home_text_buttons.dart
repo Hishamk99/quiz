@@ -8,10 +8,8 @@ import 'custuom_home_text_button_item.dart';
 class CustomHomeTextButtons extends StatelessWidget {
   const CustomHomeTextButtons({
     super.key,
-    required this.onTap,
     required this.homeController,
   });
-  final void Function(int) onTap;
   final HomeController homeController;
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,6 @@ class CustomHomeTextButtons extends StatelessWidget {
             builder: (context, snapshot) {
               return DotsIndicator(
                 onTap: (position) {
-                  onTap(position);
                   homeController.indicatorStream.add(position);
                   HomeController.currentINdexPage++;
                 },

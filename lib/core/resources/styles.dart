@@ -14,4 +14,9 @@ class Styles {
     fontWeight: FontWeight.w400,
     color: ColorsManager.kGetStartedColor,
   );
+  static TextStyle styles28_600 = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w600,
+    color: ColorsManager.kGetStartedColor,
+  );
 }

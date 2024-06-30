@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/controller/home_controller.dart';
+import 'package:quiz_app/features/home/data/home_view_list.dart';
 import 'package:quiz_app/features/home/widgets/custom_home_text_buttons.dart';
+import 'package:quiz_app/features/home/widgets/custom_home_view_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,13 +33,17 @@ class _HomePageState extends State<HomePage> {
               child: PageView.builder(
                 itemCount: 3,
                 controller: controller,
+                onPageChanged: (value) {
+                  homeController.indicatorStream.add(value);
+                },
                 itemBuilder: (BuildContext context, int index) {
-                  return Container();
+                  return CustomHomeViewItem(
+                    homeModel: HomeScreenViewList.homeScreenViewList[index],
+                  );
                 },
               ),
             ),
             CustomHomeTextButtons(
-              onTap: (int index) {}, 
               homeController: homeController,
             ),
           ],
