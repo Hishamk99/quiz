@@ -13,7 +13,7 @@ class CutomLoginLogo extends StatelessWidget {
       AssetsManager.kSplashQ,
       color: ColorsManager.kPrimaryColor,
       width: 170,
-      height: 200,
+      height: 170,
     );
   }
 }
