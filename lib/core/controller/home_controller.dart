@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:quiz_app/features/login/screens/login_page.dart';
 
 class HomeController {
   late StreamController<int> indicatorStream;
@@ -14,16 +15,19 @@ class HomeController {
     inputIndicator = indicatorStream.sink;
     outputIndicator = indicatorStream.stream;
     inputIndicator.add(currentINdexPage);
-    currentINdexPage++;
     controller = PageController(
       initialPage: currentINdexPage,
     );
   }
-  void tapNextPage() {
+  void tapNextPage(context, bool navigate) {
     currentINdexPage++;
     if (currentINdexPage == 3) {
+      if (!navigate) {
+        Navigator.pushReplacementNamed(context, LoginPage.id);
+      }
       currentINdexPage = 0;
     }
+
     inputIndicator.add(currentINdexPage);
     controller.animateToPage(
       currentINdexPage,

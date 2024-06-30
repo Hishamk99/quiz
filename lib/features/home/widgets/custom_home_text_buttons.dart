@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/controller/home_controller.dart';
 import 'package:quiz_app/core/resources/colors_manager.dart';
 import 'package:quiz_app/core/resources/styles.dart';
+import 'package:quiz_app/features/login/screens/login_page.dart';
 import 'custuom_home_text_button_item.dart';
 
 class CustomHomeTextButtons extends StatelessWidget {
@@ -19,7 +20,9 @@ class CustomHomeTextButtons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustuomHomeTextButtonItem(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, LoginPage.id);
+            },
             txt: 'Skip',
             style: Styles.styles15_400,
           ),
@@ -28,7 +31,7 @@ class CustomHomeTextButtons extends StatelessWidget {
             builder: (context, snapshot) {
               return DotsIndicator(
                 onTap: (position) {
-                  homeController.tapNextPage();
+                  homeController.tapNextPage(context , true);
                 },
                 dotsCount: 3,
                 position: snapshot.data ?? 0,
@@ -43,7 +46,7 @@ class CustomHomeTextButtons extends StatelessWidget {
           ),
           CustuomHomeTextButtonItem(
             onPressed: () {
-              homeController.tapNextPage();
+              homeController.tapNextPage(context , false);
             },
             txt: 'Next',
             style: Styles.styles15_400.copyWith(
