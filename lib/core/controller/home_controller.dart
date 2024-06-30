@@ -15,7 +15,9 @@ class HomeController {
   }
   void tapNextPage() {
     currentINdexPage++;
-    currentINdexPage = currentINdexPage % 3;
+    if (currentINdexPage == 3) {
+      currentINdexPage = 0;
+    }
     inputIndicator.add(currentINdexPage);
   }
 }
