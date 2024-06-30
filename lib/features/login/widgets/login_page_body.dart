@@ -6,10 +6,18 @@ import 'custom_login_name_text.dart';
 import 'custom_text_form_field.dart';
 import 'cutom_login_logo.dart';
 
-class LoginPageBody extends StatelessWidget {
+class LoginPageBody extends StatefulWidget {
   const LoginPageBody({
     super.key,
   });
+
+  @override
+  State<LoginPageBody> createState() => _LoginPageBodyState();
+}
+
+class _LoginPageBodyState extends State<LoginPageBody> {
+  String? name;
+  GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -20,25 +28,34 @@ class LoginPageBody extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .1,
-            ),
-            const CutomLoginLogo(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .1,
-            ),
-            const CustomLoginNameText(),
-            const SizedBox(height: 5),
-            const CustomTextFormField(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .2,
-            ),
-            CustomLoginButton(
-              onTap: () {},
-            ),
-          ],
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .1,
+              ),
+              const CutomLoginLogo(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .1,
+              ),
+              const CustomLoginNameText(),
+              const SizedBox(height: 5),
+              CustomTextFormField(
+                onSaved: (String? val) {},
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .2,
+              ),
+              CustomLoginButton(
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
