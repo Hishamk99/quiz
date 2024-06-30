@@ -8,4 +8,10 @@ class Styles {
     color: ColorsManager.kGetStartedColor,
     fontWeight: FontWeight.w400,
   );
+
+  static TextStyle styles15_400 = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.kGetStartedColor,
+  );
 }
