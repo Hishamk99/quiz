@@ -21,10 +21,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    homeController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    PageController controller = PageController(
-      initialPage: 0,
-    );
+    
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -32,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: PageView.builder(
                 itemCount: 3,
-                controller: controller,
+                controller: homeController.controller,
                 onPageChanged: (value) {
                   homeController.indicatorStream.add(value);
                 },

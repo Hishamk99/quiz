@@ -28,8 +28,7 @@ class CustomHomeTextButtons extends StatelessWidget {
             builder: (context, snapshot) {
               return DotsIndicator(
                 onTap: (position) {
-                  homeController.indicatorStream.add(position);
-                  HomeController.currentINdexPage++;
+                  homeController.tapNextPage();
                 },
                 dotsCount: 3,
                 position: snapshot.data ?? 0,

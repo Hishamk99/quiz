@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 class HomeController {
   late StreamController<int> indicatorStream;
   late Sink<int> inputIndicator;
   late Stream<int> outputIndicator;
+  late PageController controller;
 
   static int currentINdexPage = 0;
   HomeController() {
@@ -12,6 +15,9 @@ class HomeController {
     outputIndicator = indicatorStream.stream;
     inputIndicator.add(currentINdexPage);
     currentINdexPage++;
+    controller = PageController(
+      initialPage: currentINdexPage,
+    );
   }
   void tapNextPage() {
     currentINdexPage++;
@@ -19,10 +25,16 @@ class HomeController {
       currentINdexPage = 0;
     }
     inputIndicator.add(currentINdexPage);
+    controller.animateToPage(
+      currentINdexPage,
+      duration: const Duration(seconds: 1),
+      curve: Curves.bounceIn,
+    );
   }
 
   void dispose() {
     indicatorStream.close();
     indicatorStream.close();
+    controller.dispose();
   }
 }
