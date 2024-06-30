@@ -26,25 +26,29 @@ class CustomHomeTextButtons extends StatelessWidget {
             style: Styles.styles15_400,
           ),
           StreamBuilder<int>(
-              stream: homeController.outputIndicator,
-              builder: (context, snapshot) {
-                return DotsIndicator(
-                  onTap: (position) {
-                    onTap(position);
-                    homeController.indicatorStream.add(position);
-                  },
-                  dotsCount: 3,
-                  position: snapshot.data ?? 0,
-                  decorator: DotsDecorator(
-                    size: const Size(12, 12),
-                    activeSize: const Size(12, 12),
-                    activeColor: ColorsManager.kGetStartedColor,
-                    color: ColorsManager.kUnActiveIndicatorColor,
-                  ),
-                );
-              }),
+            stream: homeController.outputIndicator,
+            builder: (context, snapshot) {
+              return DotsIndicator(
+                onTap: (position) {
+                  onTap(position);
+                  homeController.indicatorStream.add(position);
+                  HomeController.currentINdexPage++;
+                },
+                dotsCount: 3,
+                position: snapshot.data ?? 0,
+                decorator: DotsDecorator(
+                  size: const Size(12, 12),
+                  activeSize: const Size(12, 12),
+                  activeColor: ColorsManager.kGetStartedColor,
+                  color: ColorsManager.kUnActiveIndicatorColor,
+                ),
+              );
+            },
+          ),
           CustuomHomeTextButtonItem(
-            onPressed: () {},
+            onPressed: () {
+              homeController.tapNextPage();
+            },
             txt: 'Next',
             style: Styles.styles15_400.copyWith(
               fontWeight: FontWeight.w600,
