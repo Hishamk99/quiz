@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/resources/styles.dart';
+import 'package:quiz_app/features/home/widgets/custom_home_text_buttons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,48 +23,11 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustuomHomeTextButton(
-                  onPressed: () {},
-                  txt: 'Skip',
-                  style: Styles.styles15_400,
-                ),
-                CustuomHomeTextButton(
-                  onPressed: () {},
-                  txt: 'Next',
-                  style: Styles.styles15_400.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
+            CustomHomeTextButtons(
+              onTap: (int index) {},
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CustuomHomeTextButton extends StatelessWidget {
-  const CustuomHomeTextButton({
-    super.key,
-    required this.onPressed,
-    required this.txt,
-    required this.style,
-  });
-  final void Function()? onPressed;
-  final String txt;
-  final TextStyle style;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Text(
-        txt,
-        style: style,
       ),
     );
   }
