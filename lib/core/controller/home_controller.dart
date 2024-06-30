@@ -9,7 +9,8 @@ class HomeController {
   late Stream<int> outputIndicator;
   late PageController controller;
 
-  static int currentINdexPage = 0;
+  int currentINdexPage = 0;
+  bool isChange = false;
   HomeController() {
     indicatorStream = StreamController<int>();
     inputIndicator = indicatorStream.sink;

@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -38,7 +37,14 @@ class _HomePageState extends State<HomePage> {
                 itemCount: 3,
                 controller: homeController.controller,
                 onPageChanged: (value) {
-                  homeController.indicatorStream.add(value);
+                  if (homeController.isChange) {
+                    if (homeController.controller.page ==
+                        homeController.currentINdexPage) {
+                      homeController.isChange = false;
+                    }
+                  } else {
+                    homeController.indicatorStream.add(value);
+                  }
                 },
                 itemBuilder: (BuildContext context, int index) {
                   return CustomHomeViewItem(
