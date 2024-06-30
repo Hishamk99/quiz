@@ -18,6 +18,7 @@ class LoginPageBody extends StatefulWidget {
 class _LoginPageBodyState extends State<LoginPageBody> {
   String? name;
   GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,8 @@ class _LoginPageBodyState extends State<LoginPageBody> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(
           key: formKey,
-          child: Column(
+          autovalidateMode: autovalidateMode,
+          child: ListView(
             children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height * .1,
@@ -51,6 +53,9 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
                   }
                 },
               ),

@@ -18,7 +18,8 @@ class CustomTextFormField extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(vertical: 12),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
         ),
