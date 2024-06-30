@@ -19,18 +19,21 @@ class HomeController {
       initialPage: currentINdexPage,
     );
   }
-  void tapNextPage(context, bool navigate) {
-    currentINdexPage++;
-    if (currentINdexPage == 3) {
-      if (!navigate) {
-        Navigator.pushReplacementNamed(context, LoginPage.id);
+  void tapNextPage(context, int index, bool navigate) {
+    if (!navigate) {
+      currentINdexPage++;
+      index = currentINdexPage;
+      if (index == 3) {
+        if (!navigate) {
+          Navigator.pushReplacementNamed(context, LoginPage.id);
+        }
+        currentINdexPage = 0;
+        index = 0;
       }
-      currentINdexPage = 0;
     }
-
-    inputIndicator.add(currentINdexPage);
+    inputIndicator.add(index);
     controller.animateToPage(
-      currentINdexPage,
+      index,
       duration: const Duration(milliseconds: 250),
       curve: Curves.linear,
     );

@@ -36,7 +36,8 @@ class _CustomFormState extends State<CustomForm> {
             onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                Navigator.pushNamed(context, QuizPage.id, arguments: name);
+                Navigator.pushReplacementNamed(context, QuizPage.id,
+                    arguments: name);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});

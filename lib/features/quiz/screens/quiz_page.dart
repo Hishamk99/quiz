@@ -5,6 +5,7 @@ class QuizPage extends StatelessWidget {
   static String id = 'QuizPage';
   @override
   Widget build(BuildContext context) {
+    String name = ModalRoute.of(context)!.settings.arguments as String;
     return const SafeArea(
       child: Scaffold(),
     );
