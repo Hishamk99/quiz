@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:quiz_app/features/login/widgets/custom_login_button.dart';
-import 'custom_answer_item.dart';
+import 'custom_answers_list_view.dart';
 import 'custom_circle_indicator.dart';
 import 'custom_question_title.dart';
 
@@ -29,11 +29,8 @@ class QuizPageBody extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 40),
-          const CustomAnswerItem(),
-          const CustomAnswerItem(),
-          const CustomAnswerItem(),
-          const CustomAnswerItem(),
-          const SizedBox(height: 40),
+          const CustomAnswersListView(),
+          const SizedBox(height: 20),
           CustomLoginButton(
             onTap: () {},
             txt: 'Next',
@@ -44,3 +41,5 @@ class QuizPageBody extends StatelessWidget {
     );
   }
 }
+
+

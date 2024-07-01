@@ -13,7 +13,9 @@ class LoginPageBody extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage(AssetsManager.kLoginImage), fit: BoxFit.cover),
+          image: AssetImage(AssetsManager.kLoginImage),
+          fit: BoxFit.cover,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -35,5 +37,3 @@ class LoginPageBody extends StatelessWidget {
     );
   }
 }
-
-
