@@ -21,7 +21,9 @@ class CustomAnswerItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 5),
         height: 50,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isActive
+              ? ColorsManager.kPrimaryColor.withOpacity(.2)
+              : Colors.white,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -34,7 +36,6 @@ class CustomAnswerItem extends StatelessWidget {
               ),
             ),
             CustomRadioItem(
-
               isActive: isActive,
             ),
           ],
