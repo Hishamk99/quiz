@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:quiz_app/core/resources/colors_manager.dart';
+import 'package:quiz_app/features/quiz/widgets/custom_radio_item.dart';
 import 'custom_circle_indicator.dart';
 import 'custom_question_title.dart';
 
@@ -24,9 +27,12 @@ class QuizPageBody extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 70),
+          CustomRadioItem(),
         ],
       ),
     );
   }
 }
+
 
