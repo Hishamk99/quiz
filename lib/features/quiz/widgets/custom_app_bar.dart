@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             SizedBox(
               height: 35,
-              width: 25,
+              width: 28,
               child: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios,

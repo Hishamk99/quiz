@@ -6,4 +6,6 @@ class ColorsManager {
   static Color kQuizBackGroundColor = const Color(0xffeff0f3);
   static Color kWhiteColor = Colors.white;
   static Color kUnActiveIndicatorColor = const Color(0xffD8D8D8).withOpacity(.66);
+  static Color kUnActivePercenIndicatorColor = const Color(0xff473F97).withOpacity(.38);
+  static Color kActivePercenIndicatorColor = const Color(0xff473F97);
 }
