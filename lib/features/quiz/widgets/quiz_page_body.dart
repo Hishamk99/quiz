@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:quiz_app/features/login/widgets/custom_login_button.dart';
 import 'custom_answer_item.dart';
 import 'custom_circle_indicator.dart';
 import 'custom_question_title.dart';
@@ -9,12 +11,12 @@ class QuizPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: ListView(
         children: [
-          SizedBox(height: 50),
-          Stack(
+          const SizedBox(height: 50),
+          const Stack(
             clipBehavior: Clip.none,
             children: [
               CustomQuestionTitle(),
@@ -26,12 +28,19 @@ class QuizPageBody extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 60),
-          CustomAnswerItem(),
+          const SizedBox(height: 40),
+          const CustomAnswerItem(),
+          const CustomAnswerItem(),
+          const CustomAnswerItem(),
+          const CustomAnswerItem(),
+          const SizedBox(height: 40),
+          CustomLoginButton(
+            onTap: () {},
+            txt: 'Next',
+          ),
+          const SizedBox(height: 40),
         ],
       ),
     );
   }
 }
-
-

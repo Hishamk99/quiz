@@ -3,8 +3,9 @@ import 'package:quiz_app/core/resources/colors_manager.dart';
 import 'package:quiz_app/core/resources/styles.dart';
 
 class CustomLoginButton extends StatelessWidget {
-  const CustomLoginButton({super.key, required this.onTap});
+  const CustomLoginButton({super.key, required this.onTap, required this.txt});
   final void Function()? onTap;
+  final String txt;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +19,7 @@ class CustomLoginButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            'Started',
+            txt,
             style: Styles.styles21_400.copyWith(
               fontSize: 24,
               color: Colors.white,

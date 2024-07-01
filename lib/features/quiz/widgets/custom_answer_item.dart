@@ -11,6 +11,7 @@ class CustomAnswerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       height: 50,
       decoration: BoxDecoration(
         color: Colors.white,

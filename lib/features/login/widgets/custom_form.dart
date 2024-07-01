@@ -33,6 +33,7 @@ class _CustomFormState extends State<CustomForm> {
             height: MediaQuery.of(context).size.height * .2,
           ),
           CustomLoginButton(
+            txt: 'Started',
             onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();

@@ -10,7 +10,7 @@ class CustomQuestionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 200,
+      height: 180,
       alignment: Alignment.center,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -29,6 +29,7 @@ class CustomQuestionTitle extends StatelessWidget {
       child: Text(
         'In what year did the United States '
         'host the FIFA World Cup for the first time?',
+        textAlign: TextAlign.center,
         style: Styles.styles18_600,
       ),
     );
