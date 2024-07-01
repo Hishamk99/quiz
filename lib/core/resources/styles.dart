@@ -19,4 +19,10 @@ class Styles {
     fontWeight: FontWeight.w600,
     color: ColorsManager.kGetStartedColor,
   );
+
+  static TextStyle styles18_600 = const TextStyle(
+    fontSize: 18,
+    fontFamily: 'Ballo2',
+    fontWeight: FontWeight.w600,
+  );
 }
