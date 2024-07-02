@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app/core/resources/colors_manager.dart';
 import 'package:quiz_app/core/resources/styles.dart';
-import 'package:quiz_app/features/quiz/cubits/question_cubit/question_cubit.dart';
+import 'package:quiz_app/features/quiz/controller/quiz_controller.dart';
 import 'package:quiz_app/features/quiz/data/questions_list.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
+    required this.quizController,
   });
-
+  final QuizController quizController;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: ColorsManager.kQuizBackGroundColor,
-      title: BlocBuilder<QuestionCubit, QuestionState>(
-        builder: (context, state) {
+      title: StreamBuilder<int>(
+        stream: quizController.outputQuestionAndAnswer,
+        builder: (context, snapshot) {
           return Text(
-            '${BlocProvider.of<QuestionCubit>(context).currentIndex + 1}/${QuestionList.questionList.length}',
+            '${(snapshot.data ?? 0) + 1}/${QuestionList.questionList.length}',
             style: Styles.styles18_600,
           );
         },

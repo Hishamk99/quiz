@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/resources/styles.dart';
+import 'package:quiz_app/features/quiz/data/questions_list.dart';
 
 class CustomQuestionTitle extends StatelessWidget {
   const CustomQuestionTitle({
-    super.key, required this.quizQuestion,
+    super.key,
+    required this.outputIndexStream,
   });
-  final String quizQuestion;
+  final Stream<int> outputIndexStream;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,10 +28,15 @@ class CustomQuestionTitle extends StatelessWidget {
         ],
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Text(
-        quizQuestion,
-        textAlign: TextAlign.center,
-        style: Styles.styles18_600,
+      child: StreamBuilder<int>(
+        stream: outputIndexStream,
+        builder: (context, snapshot) {
+          return Text(
+            QuestionList.questionList[(snapshot.data ?? 0)].question,
+            textAlign: TextAlign.center,
+            style: Styles.styles18_600,
+          );
+        },
       ),
     );
   }
