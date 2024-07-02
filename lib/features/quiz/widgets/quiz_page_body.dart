@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quiz_app/features/answer/screens/answer_page.dart';
 import 'package:quiz_app/features/login/widgets/custom_login_button.dart';
 import 'package:quiz_app/features/quiz/cubits/question_cubit/question_cubit.dart';
 import 'package:quiz_app/features/quiz/models/quiz_model.dart';
@@ -20,6 +21,7 @@ class QuizPageBody extends StatelessWidget {
       child: BlocConsumer<QuestionCubit, QuestionState>(
         listener: (context, state) {
           if (state is QuestionEnded) {
+            Navigator.pushReplacementNamed(context, AnswersPage.id);
           } else if (state is QuestionQuestionIndex) {
             questionModel = BlocProvider.of<QuestionCubit>(context).question;
           }
@@ -43,7 +45,7 @@ class QuizPageBody extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 40),
-              const CustomAnswersListView(),
+              CustomAnswersListView(answers: questionModel.answers),
               const SizedBox(height: 20),
               CustomLoginButton(
                 onTap: () {
