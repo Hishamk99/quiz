@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/resources/colors_manager.dart';
 import 'package:quiz_app/core/resources/styles.dart';
+import 'package:quiz_app/features/quiz/data/questions_list.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -12,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: ColorsManager.kQuizBackGroundColor,
       title: Text(
-        '7/10',
+        '2/${QuestionList.questionList.length}',
         style: Styles.styles18_600,
       ),
       centerTitle: true,

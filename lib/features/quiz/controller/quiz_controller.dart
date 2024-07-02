@@ -6,6 +6,8 @@ class QuizController {
   late Stream<int> outputStreamIsActive;
 
   int index = -1;
+
+  int numOfQuestion = 0;
   QuizController() {
     streamIsActive = StreamController();
     inputStreamIsActive = streamIsActive.sink;
