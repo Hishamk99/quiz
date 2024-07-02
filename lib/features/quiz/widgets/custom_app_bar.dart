@@ -14,9 +14,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: ColorsManager.kQuizBackGroundColor,
-      title: Text(
-        '${BlocProvider.of<QuestionCubit>(context).currentIndex + 1}/${QuestionList.questionList.length}',
-        style: Styles.styles18_600,
+      title: BlocBuilder<QuestionCubit, QuestionState>(
+        builder: (context, state) {
+          return Text(
+            '${BlocProvider.of<QuestionCubit>(context).currentIndex + 1}/${QuestionList.questionList.length}',
+            style: Styles.styles18_600,
+          );
+        },
       ),
       centerTitle: true,
       leadingWidth: 100,

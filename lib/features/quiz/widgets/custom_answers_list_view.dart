@@ -3,40 +3,26 @@ import 'package:quiz_app/features/quiz/controller/quiz_controller.dart';
 
 import 'custom_answer_item.dart';
 
-class CustomAnswersListView extends StatefulWidget {
-  const CustomAnswersListView({super.key, required this.answers});
+class CustomAnswersListView extends StatelessWidget {
+  const CustomAnswersListView({
+    super.key,
+    required this.answers,
+    required this.quizController,
+  });
   final List<String> answers;
-
-  @override
-  State<CustomAnswersListView> createState() => _CustomAnswersListViewState();
-}
-
-class _CustomAnswersListViewState extends State<CustomAnswersListView> {
-  late QuizController quizController;
-  @override
-  void initState() {
-    quizController = QuizController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    quizController.dispose();
-    super.dispose();
-  }
-
+  final QuizController quizController;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: widget.answers.length,
+      itemCount: answers.length,
       itemBuilder: (context, index) {
         return StreamBuilder<int>(
           stream: quizController.outputStreamIsActive,
           builder: (context, snapshot) {
             return CustomAnswerItem(
-              answer: widget.answers[index],
+              answer: answers[index],
               onTap: () {
                 quizController.onTapIndex(index);
               },

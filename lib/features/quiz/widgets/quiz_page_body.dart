@@ -4,14 +4,33 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app/features/answer/screens/answer_page.dart';
 import 'package:quiz_app/features/login/widgets/custom_login_button.dart';
+import 'package:quiz_app/features/quiz/controller/quiz_controller.dart';
 import 'package:quiz_app/features/quiz/cubits/question_cubit/question_cubit.dart';
 import 'package:quiz_app/features/quiz/models/quiz_model.dart';
 import 'custom_answers_list_view.dart';
 import 'custom_circle_indicator.dart';
 import 'custom_question_title.dart';
 
-class QuizPageBody extends StatelessWidget {
+class QuizPageBody extends StatefulWidget {
   const QuizPageBody({super.key});
+
+  @override
+  State<QuizPageBody> createState() => _QuizPageBodyState();
+}
+
+class _QuizPageBodyState extends State<QuizPageBody> {
+  late QuizController quizController;
+  @override
+  void initState() {
+    quizController = QuizController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    quizController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +55,21 @@ class QuizPageBody extends StatelessWidget {
                   CustomQuestionTitle(
                     quizQuestion: questionModel.question,
                   ),
-                  const Positioned(
+                  Positioned(
                     left: 0,
                     right: 0,
                     top: -50,
-                    child: CustomCircleIndicator(),
+                    child: CustomCircleIndicator(
+                      quizController: quizController,
+                    ),
                   ),
                 ],
               ),
               const SizedBox(height: 40),
-              CustomAnswersListView(answers: questionModel.answers),
+              CustomAnswersListView(
+                answers: questionModel.answers,
+                quizController: quizController,
+              ),
               const SizedBox(height: 20),
               CustomLoginButton(
                 onTap: () {

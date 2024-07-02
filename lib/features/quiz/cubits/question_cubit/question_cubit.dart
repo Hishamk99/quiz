@@ -14,6 +14,7 @@ class QuestionCubit extends Cubit<QuestionState> {
     currentIndex++;
 
     if (currentIndex == lenQuestion) {
+      currentIndex = lenQuestion - 1;
       emit(QuestionEnded());
     } else {
       question = QuestionList.questionList[currentIndex];
