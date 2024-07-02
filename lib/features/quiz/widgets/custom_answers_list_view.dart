@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app/features/quiz/controller/quiz_controller.dart';
+import 'package:quiz_app/features/quiz/cubits/question_cubit/question_cubit.dart';
+import 'package:quiz_app/features/quiz/models/quiz_model.dart';
 
 import 'custom_answer_item.dart';
 
@@ -26,15 +29,17 @@ class _CustomAnswersListViewState extends State<CustomAnswersListView> {
 
   @override
   Widget build(BuildContext context) {
+    QuizModel question = BlocProvider.of<QuestionCubit>(context).question;
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: 4,
+      itemCount: question.answers.length,
       itemBuilder: (context, index) {
         return StreamBuilder<int>(
           stream: quizController.outputStreamIsActive,
           builder: (context, snapshot) {
             return CustomAnswerItem(
+              answer: question.answers[index],
               onTap: () {
                 quizController.onTapIndex(index);
               },

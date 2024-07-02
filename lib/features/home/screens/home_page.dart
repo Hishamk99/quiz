@@ -43,6 +43,7 @@ class _HomePageState extends State<HomePage> {
                       homeController.isChange = false;
                     }
                   } else {
+                    homeController.currentINdexPage = value;
                     homeController.indicatorStream.add(value);
                   }
                 },

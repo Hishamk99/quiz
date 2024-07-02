@@ -3,9 +3,9 @@ import 'package:quiz_app/core/resources/styles.dart';
 
 class CustomQuestionTitle extends StatelessWidget {
   const CustomQuestionTitle({
-    super.key,
+    super.key, required this.quizQuestion,
   });
-
+  final String quizQuestion;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,8 +27,7 @@ class CustomQuestionTitle extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        'In what year did the United States '
-        'host the FIFA World Cup for the first time?',
+        quizQuestion,
         textAlign: TextAlign.center,
         style: Styles.styles18_600,
       ),

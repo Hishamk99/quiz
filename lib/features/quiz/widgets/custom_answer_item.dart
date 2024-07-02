@@ -8,9 +8,10 @@ class CustomAnswerItem extends StatelessWidget {
   const CustomAnswerItem({
     super.key,
     required this.isActive,
-    required this.onTap,
+    required this.onTap, required this.answer,
   });
   final bool isActive;
+  final String answer;
   final void Function() onTap;
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class CustomAnswerItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '1986',
+              answer,
               style: Styles.styles18_600.copyWith(
                 color: ColorsManager.kPrimaryColor,
               ),
