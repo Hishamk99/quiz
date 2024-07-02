@@ -8,7 +8,7 @@ class QuizPage extends StatelessWidget {
   static String id = 'QuizPage';
   @override
   Widget build(BuildContext context) {
-    String name = ModalRoute.of(context)!.settings.arguments as String;
+    //String name = ModalRoute.of(context)!.settings.arguments as String;
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorsManager.kQuizBackGroundColor,
