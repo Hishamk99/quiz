@@ -12,12 +12,15 @@ class QuizPage extends StatefulWidget {
   State<QuizPage> createState() => _QuizPageState();
 }
 
-class _QuizPageState extends State<QuizPage> {
+class _QuizPageState extends State<QuizPage>
+    with SingleTickerProviderStateMixin {
   late QuizController quizController;
   @override
   void initState() {
-    quizController = QuizController();
-    quizController.makeCounter(context);
+    quizController = QuizController(this);
+    quizController.forwardAnimation();
+    quizController.restartAnimation(context);
+    quizController.makeCounter();
     super.initState();
   }
 

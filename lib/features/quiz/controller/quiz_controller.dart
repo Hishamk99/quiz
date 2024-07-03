@@ -19,10 +19,23 @@ class QuizController {
   late Sink<int> inputQuestionAndAnswer;
   late Stream<int> outputQuestionAndAnswer;
 
+  late StreamController<double> streamAnimationController;
+  late Sink<double> inputStreamAnimationController;
+  late Stream<double> outputStreamAnimationController;
+
+  late AnimationController animationController;
+  double animationProgressPercent = 0.0;
+  Tween<double> tween = Tween(begin: 0.0, end: 1.0);
+
   int index = -1;
   int currentQuestionIndex = 0;
-  late Timer timer;
-  QuizController() {
+  QuizController(SingleTickerProviderStateMixin vsync) {
+    animationController = AnimationController(
+      vsync: vsync,
+      duration: const Duration(
+        seconds: 30,
+      ),
+    );
     streamIsActive = StreamController();
     inputStreamIsActive = streamIsActive.sink;
     outputStreamIsActive = streamIsActive.stream.asBroadcastStream();
@@ -37,6 +50,13 @@ class QuizController {
     outputQuestionAndAnswer =
         streamQuestionAndAnswer.stream.asBroadcastStream();
     inputQuestionAndAnswer.add(0);
+
+    streamAnimationController = StreamController();
+    inputStreamAnimationController = streamAnimationController.sink;
+    outputStreamAnimationController =
+        streamAnimationController.stream.asBroadcastStream();
+    inputStreamAnimationController.add(animationProgressPercent);
+    forwardAnimation();
   }
 
   getNextIndexOfQuestion(BuildContext context) {
@@ -46,30 +66,39 @@ class QuizController {
       Navigator.pushNamed(context, AnswersPage.id);
     } else {
       inputQuestionAndAnswer.add(currentQuestionIndex);
-      makeCounter(context);
+      makeCounter();
     }
   }
 
-  void makeCounter(BuildContext context) {
-    for (int i = 1; i <= 30; i++) {
-      timer = Timer(Duration(seconds: i), () {
-        inputstreamIndicator.add(i);
-        if (i == 30) {
-          inputstreamIndicator.add(0);
-          getNextIndexOfQuestion(context);
-        }
-      });
-    }
+  void forwardAnimation() {
+    animationController.reset();
+    animationController.forward();
+    animationController.addListener(() {
+      animationProgressPercent = tween.evaluate(animationController);
+      inputstreamIndicator.add((animationProgressPercent * 30).toInt());
+      inputStreamAnimationController.add(animationProgressPercent);
+    });
+  }
+
+  restartAnimation(BuildContext context) {
+    animationController.addStatusListener((status) {
+      if(status == AnimationStatus.completed) {
+        getNextIndexOfQuestion(context);
+      }
+    });
+  }
+
+  void makeCounter() {
+    forwardAnimation();
+    inputstreamIndicator.add((animationProgressPercent * 30).toInt());
   }
 
   List<int> choichedAnswer = [];
   void onTapIndex(int ind) {
     if (choichedAnswer.length == currentQuestionIndex) {
       choichedAnswer.add(ind);
-      print(ind);
     } else {
       choichedAnswer[currentQuestionIndex] = ind;
-      print(ind);
     }
     index = ind;
     inputStreamIsActive.add(index);
@@ -84,5 +113,8 @@ class QuizController {
 
     streamIndicator.close();
     inputstreamIndicator.close();
+
+    streamAnimationController.close();
+    inputStreamAnimationController.close();
   }
 }

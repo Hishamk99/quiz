@@ -30,6 +30,8 @@ class QuizPageBody extends StatelessWidget {
                 top: -50,
                 child: CustomCircleIndicator(
                   outputStream: quizController.outputstreamIndicator,
+                  outputAnimationValue:
+                      quizController.outputStreamAnimationController,
                 ),
               ),
             ],
@@ -46,7 +48,9 @@ class QuizPageBody extends StatelessWidget {
               }),
           const SizedBox(height: 20),
           CustomLoginButton(
-            onTap: () {},
+            onTap: () {
+              quizController.getNextIndexOfQuestion(context);
+            },
             txt: 'Next',
           ),
           const SizedBox(height: 40),
