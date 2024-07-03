@@ -25,4 +25,10 @@ class Styles {
     fontFamily: 'Ballo2',
     fontWeight: FontWeight.w600,
   );
+  static TextStyle styles21_700 = TextStyle(
+    fontSize: 21,
+    fontFamily: 'Ballo2',
+    fontWeight: FontWeight.w700,
+    color: ColorsManager.kPrimaryColor,
+  );
 }
