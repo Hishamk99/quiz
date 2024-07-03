@@ -40,6 +40,7 @@ class QuizController {
   }
 
   getNextIndexOfQuestion(BuildContext context) {
+    inputStreamIsActive.add(-1);
     currentQuestionIndex++;
     if (currentQuestionIndex == QuestionList.questionList.length) {
       Navigator.pushNamed(context, AnswersPage.id);
@@ -54,21 +55,22 @@ class QuizController {
       timer = Timer(Duration(seconds: i), () {
         inputstreamIndicator.add(i);
         if (i == 30) {
+          inputstreamIndicator.add(0);
           getNextIndexOfQuestion(context);
         }
       });
     }
   }
 
-  autoNextQuestion(BuildContext context) {
-    if (currentQuestionIndex >= QuestionList.questionList.length - 1) {
-    } else {
-      currentQuestionIndex++;
-      makeCounter(context);
-    }
-  }
-
+  List<int> choichedAnswer = [];
   void onTapIndex(int ind) {
+    if (choichedAnswer.length == currentQuestionIndex) {
+      choichedAnswer.add(ind);
+      print(ind);
+    } else {
+      choichedAnswer[currentQuestionIndex] = ind;
+      print(ind);
+    }
     index = ind;
     inputStreamIsActive.add(index);
   }
@@ -79,5 +81,8 @@ class QuizController {
 
     streamQuestionAndAnswer.close();
     inputQuestionAndAnswer.close();
+
+    streamIndicator.close();
+    inputstreamIndicator.close();
   }
 }
