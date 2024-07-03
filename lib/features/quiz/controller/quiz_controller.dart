@@ -102,13 +102,13 @@ class QuizController {
     inputstreamIndicator.add((animationProgressPercent * 31).toInt());
   }
 
-  List<int> choichedAnswer = [];
+  List<int> choichedAnswer = List<int>.filled(QuestionList.questionList.length , -1);
   void onTapIndex(int ind) {
-    if (choichedAnswer.length == currentQuestionIndex) {
-      choichedAnswer.add(ind);
-    } else {
+    // if (choichedAnswer.length == currentQuestionIndex) {
+    //   choichedAnswer.add(ind);
+    // } else {
       choichedAnswer[currentQuestionIndex] = ind;
-    }
+    //}
     index = ind;
     inputStreamIsActive.add(index);
   }
