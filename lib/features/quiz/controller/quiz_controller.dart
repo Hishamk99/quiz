@@ -29,11 +29,13 @@ class QuizController {
 
   int index = -1;
   int currentQuestionIndex = 0;
+
+  String name = '';
   QuizController(SingleTickerProviderStateMixin vsync) {
     animationController = AnimationController(
       vsync: vsync,
       duration: const Duration(
-        seconds: 30,
+        seconds: 31,
       ),
     );
     streamIsActive = StreamController();
@@ -58,12 +60,19 @@ class QuizController {
     inputStreamAnimationController.add(animationProgressPercent);
     forwardAnimation();
   }
+  // pass name to answer page
+  void addName(String yourName) {
+    name = yourName;
+  }
 
   getNextIndexOfQuestion(BuildContext context) {
     inputStreamIsActive.add(-1);
     currentQuestionIndex++;
     if (currentQuestionIndex == QuestionList.questionList.length) {
-      Navigator.pushNamed(context, AnswersPage.id);
+      Navigator.pushNamed(context, AnswersPage.id, arguments: {
+        "name": name,
+        "answers": choichedAnswer,
+      });
     } else {
       inputQuestionAndAnswer.add(currentQuestionIndex);
       makeCounter();
@@ -75,14 +84,14 @@ class QuizController {
     animationController.forward();
     animationController.addListener(() {
       animationProgressPercent = tween.evaluate(animationController);
-      inputstreamIndicator.add((animationProgressPercent * 30).toInt());
+      inputstreamIndicator.add((animationProgressPercent * 31).toInt());
       inputStreamAnimationController.add(animationProgressPercent);
     });
   }
 
   restartAnimation(BuildContext context) {
     animationController.addStatusListener((status) {
-      if(status == AnimationStatus.completed) {
+      if (status == AnimationStatus.completed) {
         getNextIndexOfQuestion(context);
       }
     });
@@ -90,7 +99,7 @@ class QuizController {
 
   void makeCounter() {
     forwardAnimation();
-    inputstreamIndicator.add((animationProgressPercent * 30).toInt());
+    inputstreamIndicator.add((animationProgressPercent * 31).toInt());
   }
 
   List<int> choichedAnswer = [];

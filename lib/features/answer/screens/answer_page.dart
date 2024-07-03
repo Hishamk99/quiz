@@ -6,6 +6,10 @@ class AnswersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> nameAndAnswers =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    print(nameAndAnswers['name']);
+    print(nameAndAnswers['answers']);
     return const SafeArea(
       child: Scaffold(),
     );
