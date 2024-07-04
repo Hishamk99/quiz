@@ -20,24 +20,30 @@ class HomeController {
       initialPage: currentINdexPage,
     );
   }
-  void tapNextPage(context, int index, bool navigate) {
-    if (!navigate) {
-      currentINdexPage++;
-      index = currentINdexPage;
-      if (index == 3) {
-        if (!navigate) {
-          Navigator.pushReplacementNamed(context, LoginPage.id);
-        }
-        currentINdexPage = 0;
-        index = 0;
-      }
-    }
-    inputIndicator.add(index);
+  void tapNextPage(BuildContext context, int index) {
+    currentINdexPage = index;
+
+    inputIndicator.add(currentINdexPage);
     controller.animateToPage(
       index,
       duration: const Duration(milliseconds: 250),
       curve: Curves.linear,
     );
+  }
+
+  changePage(BuildContext context) {
+    currentINdexPage++;
+    if (currentINdexPage == 3) {
+      Navigator.pushReplacementNamed(context, LoginPage.id);
+      currentINdexPage = 0;
+    } else {
+      inputIndicator.add(currentINdexPage);
+      controller.animateToPage(
+        currentINdexPage,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.linear,
+      );
+    }
   }
 
   void dispose() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/resources/colors_manager.dart';
-import 'package:quiz_app/features/home/widgets/custom_correct_answer.dart';
+import 'package:quiz_app/features/answer/widgets/custom_correct_answer.dart';
 import 'custom_question_answer_page.dart';
 
 class CustomCorrectQuestionResults extends StatelessWidget {

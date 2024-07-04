@@ -32,7 +32,7 @@ class CustomHomeTextButtons extends StatelessWidget {
               return DotsIndicator(
                 onTap: (position) {
                   homeController.isChange = true;
-                  homeController.tapNextPage(context, position, true);
+                  homeController.tapNextPage(context, position);
                 },
                 dotsCount: 3,
                 position: snapshot.data ?? 0,
@@ -47,8 +47,7 @@ class CustomHomeTextButtons extends StatelessWidget {
           ),
           CustuomHomeTextButtonItem(
             onPressed: () {
-              homeController.tapNextPage(
-                  context, homeController.currentINdexPage, false);
+              homeController.changePage(context);
             },
             txt: 'Next',
             style: Styles.styles15_400.copyWith(
