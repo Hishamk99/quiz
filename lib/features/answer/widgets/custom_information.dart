@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/resources/styles.dart';
+import 'package:quiz_app/features/quiz/data/questions_list.dart';
 
 class CustomInformation extends StatelessWidget {
   const CustomInformation({
@@ -11,6 +12,7 @@ class CustomInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<int> choicedList = nameAndAnswers['answers'] as List<int>;
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -28,7 +30,7 @@ class CustomInformation extends StatelessWidget {
               style: Styles.styles21_700,
             ),
             Text(
-              'Grade : 2  /  ${nameAndAnswers['answers'].length}',
+              'Grade : ${numOfCorrect(choicedList)}  /  ${nameAndAnswers['answers'].length}',
               style: Styles.styles21_700.copyWith(
                 fontWeight: FontWeight.w500,
               ),
@@ -37,5 +39,17 @@ class CustomInformation extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  int numOfCorrect(List<int> choicedList) {
+    int res = 0;
+    for (int i = 0; i < choicedList.length; i++) {
+      if (choicedList[i] != -1 &&
+          QuestionList.correctAnswers[i] ==
+              QuestionList.questionList[i].answers[choicedList[i]]) {
+        res++;
+      }
+    }
+    return res;
   }
 }

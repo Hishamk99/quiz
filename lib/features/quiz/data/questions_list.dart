@@ -27,8 +27,8 @@ class QuestionList {
       answers: [
         "Berlin",
         "Paris",
-        "London"
-            "Rome",
+        "London",
+        "Rome",
       ],
     ),
     QuizModel(

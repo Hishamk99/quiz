@@ -39,7 +39,8 @@ class CustomResultsListView extends StatelessWidget {
                       : QuestionList.correctAnswers[index] ==
                           QuestionList
                               .questionList[index].answers[choicedList[index]],
-                  correctAnswer: QuestionList.correctAnswers[index],
+                  correctAnswer: QuestionList.correctAnswers[index], 
+                  choichedIndex: choicedList[index],
                 ),
               ],
             ),

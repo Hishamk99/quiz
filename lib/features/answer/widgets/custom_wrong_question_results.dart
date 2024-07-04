@@ -11,10 +11,12 @@ class CustomWrongQuestionResults extends StatelessWidget {
     required this.index,
     required this.isCorrectAnswer,
     required this.correctAnswer,
+    required this.choichedIndex,
   });
   final int index;
   final bool isCorrectAnswer;
   final String correctAnswer;
+  final int choichedIndex;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -39,9 +41,10 @@ class CustomWrongQuestionResults extends StatelessWidget {
                 Divider(
                   color: Colors.white.withOpacity(.23),
                 ),
-                if (!isCorrectAnswer) const CustomWrongAnswer(),
+                if (!isCorrectAnswer)
+                  CustomWrongAnswer(coichedIndex: choichedIndex, index: index),
                 const SizedBox(height: 8),
-                 CustomCorrectAnswer(index: index,),
+                CustomCorrectAnswer(index: index),
               ],
             ),
           ),
