@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'custom_information.dart';
 import 'custom_question_order.dart';
-import 'custom_question_results.dart';
+//import 'custom_correct_question_results.dart';
+import 'custom_wrong_question_results.dart';
 
 class AnswersBody extends StatelessWidget {
   const AnswersBody({
@@ -22,7 +23,7 @@ class AnswersBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomQuestionOrder(),
-              CustomQuestionResults(),
+              CustomWrongQuestionResults(),
             ],
           ),
         ],

@@ -3,8 +3,8 @@ import 'package:quiz_app/core/resources/colors_manager.dart';
 import 'package:quiz_app/features/home/widgets/custom_correct_answer.dart';
 import 'custom_question_answer_page.dart';
 
-class CustomQuestionResults extends StatelessWidget {
-  const CustomQuestionResults({
+class CustomCorrectQuestionResults extends StatelessWidget {
+  const CustomCorrectQuestionResults({
     super.key,
   });
 
@@ -30,7 +30,8 @@ class CustomQuestionResults extends StatelessWidget {
                 Divider(
                   color: Colors.white.withOpacity(.23),
                 ),
-               const CustomCorrectAnswer(),
+                const CustomCorrectAnswer(),
+                
               ],
             ),
           ),
@@ -39,5 +40,3 @@ class CustomQuestionResults extends StatelessWidget {
     );
   }
 }
-
-
