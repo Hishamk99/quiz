@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'custom_information.dart';
 import 'custom_question_order.dart';
+import 'custom_question_results.dart';
 
 class AnswersBody extends StatelessWidget {
   const AnswersBody({
@@ -19,17 +18,11 @@ class AnswersBody extends StatelessWidget {
           const SizedBox(height: 20),
           CustomInformation(nameAndAnswers: nameAndAnswers),
           const SizedBox(height: 20),
-           Row(
+          const Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             const CustomQuestionOrder(),
-              Container(
-                decoration: BoxDecoration(
-
-                ),
-                child: const Column(
-                  children: [],
-                ),
-              ),
+              CustomQuestionOrder(),
+              CustomQuestionResults(),
             ],
           ),
         ],

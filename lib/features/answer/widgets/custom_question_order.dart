@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/resources/colors_manager.dart';
 import 'package:quiz_app/core/resources/styles.dart';
 
 class CustomQuestionOrder extends StatelessWidget {
@@ -9,11 +10,10 @@ class CustomQuestionOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-      decoration: const BoxDecoration(
-        color: Color(0xff35AC05),
-        borderRadius: BorderRadius.only(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+      decoration: BoxDecoration(
+        color: ColorsManager.kGreenColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(17),
