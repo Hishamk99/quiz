@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-import 'custom_name_grade.dart';
+import 'custom_information.dart';
+import 'custom_question_order.dart';
 
 class AnswersBody extends StatelessWidget {
   const AnswersBody({
@@ -15,11 +17,23 @@ class AnswersBody extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          CustomNameGrade(nameAndAnswers: nameAndAnswers),
+          CustomInformation(nameAndAnswers: nameAndAnswers),
+          const SizedBox(height: 20),
+           Row(
+            children: [
+             const CustomQuestionOrder(),
+              Container(
+                decoration: BoxDecoration(
+
+                ),
+                child: const Column(
+                  children: [],
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 }
-
-

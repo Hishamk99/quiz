@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/resources/styles.dart';
 
-class CustomNameGrade extends StatelessWidget {
-  const CustomNameGrade({
+class CustomInformation extends StatelessWidget {
+  const CustomInformation({
     super.key,
     required this.nameAndAnswers,
   });
@@ -13,13 +13,12 @@ class CustomNameGrade extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 90,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.white,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
