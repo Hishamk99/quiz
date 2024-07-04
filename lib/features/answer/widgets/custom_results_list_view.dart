@@ -26,7 +26,7 @@ class CustomResultsListView extends StatelessWidget {
                   order: index,
                   isCorrect: false,
                 ),
-                const CustomWrongQuestionResults(),
+                CustomWrongQuestionResults(index: index),
               ],
             ),
           );

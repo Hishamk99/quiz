@@ -7,9 +7,9 @@ import 'custom_wrong_answer.dart';
 
 class CustomWrongQuestionResults extends StatelessWidget {
   const CustomWrongQuestionResults({
-    super.key,
+    super.key, required this.index,
   });
-
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -28,7 +28,7 @@ class CustomWrongQuestionResults extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const CustomQuestionAnswerPage(),
+                 CustomQuestionAnswerPage(index: index),
                 Divider(
                   color: Colors.white.withOpacity(.23),
                 ),
