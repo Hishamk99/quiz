@@ -17,13 +17,16 @@ class CustomResultsListView extends StatelessWidget {
       child: ListView.builder(
         itemCount: nameAndAnswers['answers'].length,
         itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.only(bottom: 8),
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 8),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomQuestionOrder(),
-                CustomWrongQuestionResults(),
+                CustomQuestionOrder(
+                  order: index,
+                  isCorrect: false,
+                ),
+                const CustomWrongQuestionResults(),
               ],
             ),
           );
