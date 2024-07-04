@@ -5,9 +5,10 @@ import 'custom_question_answer_page.dart';
 
 class CustomCorrectQuestionResults extends StatelessWidget {
   const CustomCorrectQuestionResults({
-    super.key, required this.index,
+    super.key,
+    required this.index,
   });
-   final int index;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -30,8 +31,7 @@ class CustomCorrectQuestionResults extends StatelessWidget {
                 Divider(
                   color: Colors.white.withOpacity(.23),
                 ),
-                const CustomCorrectAnswer(),
-                
+                CustomCorrectAnswer(index: index),
               ],
             ),
           ),

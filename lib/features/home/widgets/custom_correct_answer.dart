@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/resources/colors_manager.dart';
 import 'package:quiz_app/core/resources/styles.dart';
+import 'package:quiz_app/features/quiz/data/questions_list.dart';
 
 class CustomCorrectAnswer extends StatelessWidget {
   const CustomCorrectAnswer({
-    super.key,
+    super.key, required this.index,
   });
-
+final int index;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +27,7 @@ class CustomCorrectAnswer extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              '1988',
+              QuestionList.correctAnswers[index],
               textAlign: TextAlign.center,
               style: Styles.styles18_600.copyWith(
                 color: ColorsManager.kPrimaryColor,

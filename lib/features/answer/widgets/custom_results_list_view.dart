@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/features/quiz/data/questions_list.dart';
 
 import 'custom_question_order.dart';
 import 'custom_wrong_question_results.dart';
@@ -13,6 +14,7 @@ class CustomResultsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<int> choicedList = nameAndAnswers['answers'] as List<int>;
     return Expanded(
       child: ListView.builder(
         itemCount: nameAndAnswers['answers'].length,
@@ -24,9 +26,21 @@ class CustomResultsListView extends StatelessWidget {
               children: [
                 CustomQuestionOrder(
                   order: index,
-                  isCorrect: false,
+                  isCorrect: choicedList[index] == -1
+                      ? false
+                      : QuestionList.correctAnswers[index] ==
+                          QuestionList
+                              .questionList[index].answers[choicedList[index]],
                 ),
-                CustomWrongQuestionResults(index: index),
+                CustomWrongQuestionResults(
+                  index: index,
+                  isCorrectAnswer: choicedList[index] == -1
+                      ? false
+                      : QuestionList.correctAnswers[index] ==
+                          QuestionList
+                              .questionList[index].answers[choicedList[index]],
+                  correctAnswer: QuestionList.correctAnswers[index],
+                ),
               ],
             ),
           );

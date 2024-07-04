@@ -42,4 +42,11 @@ class QuestionList {
       ],
     ),
   ];
+
+  static List<String> correctAnswers = [
+    "flutter developer",
+    "google",
+    "Paris",
+    "William Shakespeare",
+  ];
 }
