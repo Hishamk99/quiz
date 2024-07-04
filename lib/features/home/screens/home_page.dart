@@ -37,16 +37,10 @@ class _HomePageState extends State<HomePage> {
                 itemCount: 3,
                 controller: homeController.controller,
                 onPageChanged: (value) {
-                  if (homeController.isChange) {
-                    if (homeController.controller.page ==
-                        homeController.currentINdexPage) {
-                      // homeController.indicatorStream.add(value);
-                      homeController.isChange = false;
-                    }
-                  } else {
-                    homeController.currentINdexPage = value;
-                    homeController.indicatorStream.add(value);
-                  }
+                  debugPrint(value.toString());
+
+                  homeController.currentINdexPage = value;
+                  homeController.indicatorStream.add(value);
                 },
                 itemBuilder: (BuildContext context, int index) {
                   return CustomHomeViewItem(

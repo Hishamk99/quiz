@@ -10,7 +10,7 @@ class HomeController {
   late PageController controller;
 
   int currentINdexPage = 0;
-  bool isChange = false;
+ // bool isChange = false;
   HomeController() {
     indicatorStream = StreamController<int>();
     inputIndicator = indicatorStream.sink;
@@ -24,10 +24,10 @@ class HomeController {
     currentINdexPage = index;
 
     inputIndicator.add(currentINdexPage);
-    controller.animateToPage(
+    controller.jumpToPage(
       index,
-      duration: const Duration(milliseconds: 250),
-      curve: Curves.linear,
+      // duration: const Duration(milliseconds: 250),
+      // curve: Curves.linear,
     );
   }
 
@@ -38,10 +38,10 @@ class HomeController {
       currentINdexPage = 0;
     } else {
       inputIndicator.add(currentINdexPage);
-      controller.animateToPage(
+      controller.jumpToPage(
         currentINdexPage,
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.linear,
+        // duration: const Duration(milliseconds: 250),
+        // curve: Curves.linear,
       );
     }
   }
